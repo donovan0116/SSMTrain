@@ -5,7 +5,7 @@
   Time: 19:30
   To change this template use File | Settings | File Templates.
 --%>
-<%@ page contentType="text/html;charset=UTF-8" language="java" isELIgnored="false"%>
+<%@ page contentType="text/html;charset=UTF-8" language="java" isELIgnored="false" %>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jstl/fmt" %>
 <html>
@@ -44,16 +44,18 @@
         var name = $("input[id='name']").val();
         var type = $("input[id='type']").val();
         var comment = $("input[id='comment']").val();
+        var state = "出售中";
         var data = {
+            "id": id,
             "name": name,
             "type": type,
-            "comment": comment
+            "comment": comment,
+            "state": state
         }
         $.ajax({
             type: "post",
-            url: url,
-            dataType: "text",
-            comtentType: "application/json",
+            url: "http://localhost:8080/commodity/update",
+            contentType: "application/json;charset=UTF-8",
             data: JSON.stringify(data),
             success: function (data) {
                 var url = "http://localhost:8080/commodity/findAll"

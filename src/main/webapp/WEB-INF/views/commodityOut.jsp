@@ -43,7 +43,7 @@
 
 <script>
     $("#out").click(function () {
-        console.log($("#name").val())
+        // console.log($("#name").val())
         var _this = this;
         var id = _this.value;
         var url = "http://localhost:8080/commodity/updateState";
@@ -59,7 +59,7 @@
         $.ajax({
             type: "post",
             url: "http://localhost:8080/commodity/updateState",
-            contextType: "application/json",
+            contentType: "application/json;charset=UTF-8",
             data: JSON.stringify(data),
             success: function (data) {
                 var url = "http://localhost:8080/commodity/findAll"

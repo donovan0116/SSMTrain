@@ -44,16 +44,18 @@
         var name = $("input[id='name']").val();
         var type = $("input[id='type']").val();
         var comment = $("input[id='comment']").val();
+        var state = "出售中";
         var data = {
-            "name": name,
-            "type": type,
-            "comment": comment
+            "id": "0",
+            "name": $("#name").val(),
+            "type": $("#type").val(),
+            "comment": $("#comment").val(),
+            "state": state
         }
         $.ajax({
             type: "post",
-            url: url,
-            dataType: "text",
-            comtentType: "application/json",
+            url: "http://localhost:8080/commodity/save",
+            contentType: "application/json;charset=UTF-8",
             data: JSON.stringify(data),
             success: function (data) {
                 var url = "http://localhost:8080/commodity/findAll"
