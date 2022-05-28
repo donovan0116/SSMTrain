@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.donovan.dao.CommodityDao">
+    <resultMap id="commodityMap" type="com.donovan.model.Commodity">
+        <id property="id" column="id"/>
+        <id property="name" column="name"/>
+        <id property="type" column="type"/>
+        <id property="comment" column="comment"/>
+        <id property="state" column="state"/>
+    </resultMap>
+
+    <select id="findAll" resultMap="commodityMap">
+        select *
+        from commodity
+        where state != '0';
+    </select>
+
+    <select id="findById" resultType="com.donovan.model.Commodity">
+        select *
+        from commodity
+        where id = #{id};
+    </select>
+
+    <insert id="save" useGeneratedKeys="true" keyProperty="id" parameterType="com.donovan.model.Commodity">
+        <selectKey keyProperty="id" resultType="int" order="BEFORE">
+            select max(id) + 1 as id from commodity
+        </selectKey>
+        insert into commodity(id, name, type, comment, state)
+        value (#{id}, #{name}, #{type}, #{comment}, #{state})
+    </insert>
+
+    <insert id="update" parameterType="com.donovan.model.Commodity">
+        update commodity
+        <set>
+            name = #{commodity.name},
+            type = #{commodity.type},
+            comment = #{commodity.comment},
+            state = #{commodity.state}
+        </set>
+        <where>
+            id = #{commodity.id}
+        </where>
+    </insert>
+
+    <insert id="updateState" parameterType="com.donovan.model.Commodity">
+        update commodity
+        <set>
+            state = #{commodity.state}
+        </set>
+        <where>
+            id = #{commodity.id}
+        </where>
+    </insert>
+
+</mapper>
