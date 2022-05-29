@@ -1,12 +1,8 @@
-# SSMTrain
-+ 搭建SSM平台  
-+ 过几天再补充完整的配置过程，这个过程还是可圈可点的。
----
-2022/5/29补充
 # SSM项目快速搭建
 
-> 来源自黄文毅的《Web轻量级框架Spring+Spring MVC+MyBatis整合开发实战》的第二章
 
+> 来源自黄文毅的《Web轻量级框架Spring+Spring MVC+MyBatis整合开发实战》的第二章  
+> 写作于2022/5/29，觉得有帮助给个star呗
 ## 一、快速搭建Web项目
 
 ### 1.1 安装JDK、Tomcat、MySQL、idea
